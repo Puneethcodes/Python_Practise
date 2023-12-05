@@ -1,0 +1,28 @@
+class Solution(object):
+    def convert(self, s, numRows):
+        if len(s) == 1 or numRows == 1:
+            res = s
+        else:
+            lst = [[] for _ in range(numRows)]
+            i = 0
+            flag = True
+            for ch in s:
+                if i == numRows-1:
+                    flag = False
+                if i == 0:
+                    flag = True
+
+                if flag:
+                    lst[i].append(ch)
+                    i += 1
+                else:
+                    lst[i].append(ch)
+                    i -= 1
+            res = ''.join([''.join(row) for row in lst])
+        
+        return res
+
+s = "AB"
+numRows = 1
+res = Solution().convert(s,numRows)
+print(res)
